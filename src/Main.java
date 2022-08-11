@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
     public static String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
@@ -9,6 +10,26 @@ public class Main {
             "mollit anim id est laborum.";
 
     public static void main(String[] args) {
-        
+        WordsChecker wordsChecker = new WordsChecker(text);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(text);
+
+        while (true) {
+            System.out.println("Введите слово для проверки (stop - выход; text - вывести текст): ");
+
+            String input = scanner.nextLine();
+
+            if (input.equals("stop")) {
+                break;
+            }
+
+            if (input.equals("text")) {
+                System.out.println(text);
+                continue;
+            }
+
+            System.out.println((wordsChecker.hasWord(input) ? "Слово есть в тексте" : "Слова нет в тексте"));
+        }
     }
 }
